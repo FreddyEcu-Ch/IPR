@@ -1,0 +1,22 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+def IPR_Curve():
+  Pwf = np.arange(0, 2000, 100)
+  Q = []
+  Pr = 3500
+  IP = 0.5
+  for i in Pwf:
+    Qo = IP*(Pr-i)
+    Q.append(Qo)
+  Q = np.array(Q)
+  df = pd.DataFrame()
+  df["Q"]=Q
+  df["Pwf"]=Pwf
+  plot = plt.plot(Q, Pwf)
+  plt.xlabel("Qo(STB)")
+  plt.ylabel("Pressure(Psia)")
+  plt.title("Inflow Performance Relationship")
+  plt.grid(True)
+  return df, plot
+ 
